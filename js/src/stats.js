@@ -64,22 +64,12 @@ module.exports = (common) => {
     })
 
     it('.bw Promise', () => {
-      if (!withGo) {
-        console.log('Not supported in js-ipfs yet')
-        return
-      }
-
       return ipfs.stats.bw().then((res) => {
         statsTests.expectIsBandwidth(null, res)
       })
     })
 
     it('.bwReadableStream', (done) => {
-      if (!withGo) {
-        console.log('Not supported in js-ipfs yet')
-        return done()
-      }
-
       const stream = ipfs.stats.bwReadableStream()
 
       stream.once('data', (data) => {
@@ -90,11 +80,6 @@ module.exports = (common) => {
     })
 
     it('.bwPullStream', (done) => {
-      if (!withGo) {
-        console.log('Not supported in js-ipfs yet')
-        return done()
-      }
-
       const stream = ipfs.stats.bwPullStream()
 
       pull(
